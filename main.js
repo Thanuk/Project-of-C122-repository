@@ -42,6 +42,14 @@ function setup() {
   screen_height = window.innerHeight;
 
   canvas = createCanvas(screen_width, screen_height - 150);
+  "<br>"
+  button = createButton("Clear Canvas");
+  button.mousePressed(clearCanvas);
+}
+
+function clearCanvas(){
+  canvas.clear();
+  document.getElementById("status").innerHTML = "Start to draw apple"
 }
 
 function speak(){
@@ -52,20 +60,17 @@ function speak(){
 }
 
 function draw() {
-  if(drawn_apple == "set")
-  {
-    speak_data = document.getElementById("status").innerHTML = to_number + " Apples drawn";
+  if(drawn_apple == "set"){
+    for(var i = 1 ; i <= to_number; i++){
+      x = Math.floor(Math.random() * 700);
+      y = Math.floor(Math.random() * 400);
+      image(apple, x, y, 50, 50);
+    }
     document.getElementById("status").innerHTML = to_number + " Apples drawn";
+    speak_data = to_number + "Apples drawn";
+    speak();
     drawn_apple = "";
   }
-
-  for (var i = 1; i <= to_number; i++) {
-    x = Math.floor(Math.round() * 700);
-    y = Math.floor(Math.round() * 400);
-    image(apple, x, y, 50, 50);
-  }
-
-  speak();
 }
 
 
